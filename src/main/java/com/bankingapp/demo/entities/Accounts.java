@@ -17,7 +17,7 @@ public class Accounts {
     private long accountBalance;
 
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private List<Transaction> transaction;
 
 

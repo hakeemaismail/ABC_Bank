@@ -55,7 +55,7 @@ public class AccountService {
         Accounts account = accRepo.findById(accID).get();
         account.setAccountBalance(0);
         account.setTransaction(new ArrayList<>());
-       accRepo.save(account);
+        accRepo.save(account);
     }
 
 

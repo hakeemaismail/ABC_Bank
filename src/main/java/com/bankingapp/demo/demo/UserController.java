@@ -50,7 +50,7 @@ public class UserController {
             //User user = service.createFromDto(userCreationDto);
             return new ResponseWrapper<>(user, "success", "created");}
           else {
-              return new ResponseWrapper<>(null, "failed", "already exists");
+              return new ResponseWrapper<>(null, "exists", "already exists");
           }
 
         }catch (Exception e){
@@ -86,7 +86,7 @@ public class UserController {
     }
 
     @DeleteMapping("/deleteUser/{id}")
-    public void deleteUser(long id){
+    public void deleteUser(@PathVariable long id){
         service.deleteUser(id);
     }
 

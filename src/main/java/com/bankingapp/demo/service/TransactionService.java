@@ -127,10 +127,10 @@ public class TransactionService {
     public void generateUserListPdf(HttpServletResponse response, long accID) throws IOException {
 
         Document document = new Document(PageSize.A4);
-        //create a pdf write to actually edit the document
+
         PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
 
-        //open the document for editing
+
         document.open();
 
         Font textFont = FontFactory.getFont(FontFactory.COURIER_BOLD);
@@ -140,67 +140,60 @@ public class TransactionService {
         Font tableHeaderFont = FontFactory.getFont(FontFactory.TIMES_BOLD);
         textFont.setSize(16);
 
-
-
         PdfPTable table = new PdfPTable(7);
 
-        //set width of the table with respect to the page size. 100f = 100.00
         table.setWidthPercentage(100f);
 
-        //set padding above table
         table.setSpacingBefore(10);
 
-        //create a cell in the table to hold one header value
         PdfPCell headerCell = new PdfPCell();
 
-        //set the text held within the header cell
         headerCell.setPhrase(new Phrase("Transaction ID", tableHeaderFont));
         headerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         headerCell.setBackgroundColor(Color.LIGHT_GRAY);
 
-        //add cell to table
         table.addCell(headerCell);
 
-        //add second column header to the table (using the same variable).
+
         headerCell.setPhrase(new Phrase("Date", tableHeaderFont));
         headerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         headerCell.setBackgroundColor(Color.LIGHT_GRAY);
-        //add second cell to table
+
         table.addCell(headerCell);
 
-        //add second column header to the table (using the same variable).
+
         headerCell.setPhrase(new Phrase("Transaction Type", tableHeaderFont));
         headerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         headerCell.setBackgroundColor(Color.LIGHT_GRAY);
-        //add second cell to table
+
         table.addCell(headerCell);
 
-        //add second column header to the table (using the same variable).
+
         headerCell.setPhrase(new Phrase("Source Account", tableHeaderFont));
         headerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         headerCell.setBackgroundColor(Color.LIGHT_GRAY);
-        //add second cell to table
+
         table.addCell(headerCell);
 
-        //add second column header to the table (using the same variable).
+
         headerCell.setPhrase(new Phrase("Destination Account", tableHeaderFont));
         headerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         headerCell.setBackgroundColor(Color.LIGHT_GRAY);
-        //add second cell to table
+
         table.addCell(headerCell);
 
-        //add second column header to the table (using the same variable).
+
         headerCell.setPhrase(new Phrase("Transfer Amount", tableHeaderFont));
         headerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         headerCell.setBackgroundColor(Color.LIGHT_GRAY);
-        //add second cell to table
+
         table.addCell(headerCell);
 
-        //add second column header to the table (using the same variable).
+
         headerCell.setPhrase(new Phrase("Account Balance", tableHeaderFont));
         headerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         headerCell.setBackgroundColor(Color.LIGHT_GRAY);
-        //add second cell to table
+
         table.addCell(headerCell);
 
         List<Transaction> transactionList = viewTransactionsOfASpecificUser(accID);
@@ -218,13 +211,10 @@ public class TransactionService {
 
         }
 
-        //add table to document
         document.add(table);
 
-        //close document
         document.close();
-
-        //close write
+        
         writer.close();
 
 
